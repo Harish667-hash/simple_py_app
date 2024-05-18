@@ -30,7 +30,7 @@ artifact:
  files:
   appspec.yaml
   script/* .sh
-
+#variables
 env:
   variables:
    DOCKERHUB_USERNAME: "harish552" #store in secrete in csp
