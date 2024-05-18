@@ -1,5 +1,43 @@
-version 
+version: 0.2
 
 phases:
+  install:
+   runtime version:
+    python 3.8
+  pre_build:
+   commends:
+    - echo Installing Dependencies
+    - pip install 
+    - pip install -r requirements.txt
+    - echo Installing Docker..
+    - apt get update -y
+    - apt get install -y docker.io
+   
+  build:
+   - echo "Running Docker build script...
+   # Build Docker image
+   - docker build -t $DOCKERHUB_USERNAME/$REPO_NAME:$TAG .
+    # Log in to Docker Hub
+   - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
+    # Push Docker image to Docker Hub
+   - docker push $DOCKERHUB_USERNAME/$REPO_NAME:$TAG
+  # Tag and push latest version of Docker image
+   - docker tag $DOCKERHUB_USERNAME/$REPO_NAME:$TAG $DOCKERHUB_USERNAME/$REPO_NAME:latest
+   - docker push $DOCKERHUB_USERNAME/$REPO_NAME:latest
 
-art
+
+artifact:
+ files:
+  appspec.yaml
+  script/* .sh
+
+env:
+  variables:
+   DOCKERHUB_USERNAME: "harish552"
+   DOCKERHUB_PASSWORD: "Hsirah@1142"
+   REPO_NAME: "sample"
+   TAG: "latest"
+
+
+
+
