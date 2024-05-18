@@ -33,8 +33,8 @@ artifact:
 
 env:
   variables:
-   DOCKERHUB_USERNAME: "harish552"
-   DOCKERHUB_PASSWORD: "Hsirah@1142"
+   DOCKERHUB_USERNAME: "harish552" #store in secrete in csp
+   DOCKERHUB_PASSWORD: "Hsirah@1142"  #store in secrete in csp
    REPO_NAME: "sample"
    TAG: "latest"
 
