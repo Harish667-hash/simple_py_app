@@ -17,7 +17,6 @@ phases:
   build:
     commands:
       - echo "Running Docker build script..."
-      - cd simple_py_app/
       - docker build -t $DOCKERHUB_USERNAME/$REPO_NAME:$TAG .
       - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - docker push $DOCKERHUB_USERNAME/$REPO_NAME:$TAG
