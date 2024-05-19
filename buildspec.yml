@@ -31,13 +31,14 @@ phases:
  #files:
  # appspec.yaml
  # script/* .sh
+
 #variables
-#env:
-  #variables:
- #  DOCKERHUB_USERNAME: "harish552" #store in secrete in csp
- #  DOCKERHUB_PASSWORD: "Hsirah@1142"  #store in secrete in csp
-  # REPO_NAME: "sample"
-  # TAG: "latest"
+env:
+  variables:
+   DOCKERHUB_USERNAME: "/myapp/docker-credentials/username" #store in secrete in csp
+   DOCKERHUB_PASSWORD: "/myapp/docker-credentials/passwd"  #store in secrete in csp
+   REPO_NAME: "sample"
+   TAG: "latest"
 
 
 
