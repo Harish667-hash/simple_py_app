@@ -19,8 +19,9 @@ phases:
       - docker build -t "$DOCKERHUB_USERNAME/sample:latest" .
       - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - docker push "$DOCKERHUB_USERNAME/sample:latest"
-      - docker tag "$DOCKERHUB_USERNAME/sample:latest $DOCKERHUB_USERNAME/sample:latest"
-      - docker push "$DOCKERHUB_USERNAME/sample:latest"
+    
+     
+      
   post_build:
     commands:
       - echo "Build is successful"
