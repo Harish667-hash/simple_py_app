@@ -1,4 +1,3 @@
----
 version: 0.2
 env:
   variables:
@@ -9,24 +8,24 @@ env:
     TAG: latest
 phases:
   install:
-    runtime version: Python 3.8
+    runtime-versions:
+      python: 3.8
   pre_build:
-    commends:
+    commands:
       - echo Installing Dependencies
-      - pip install
       - pip install -r requirements.txt
-    build:
-      - echo "Running Docker build script...
+  build:
+    commands:
+      - echo "Running Docker build script..."
       - cd simple_py_app/
       - docker build -t $DOCKERHUB_USERNAME/$REPO_NAME:$TAG .
-      - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME"
-        --password-stdin
+      - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
       - docker push $DOCKERHUB_USERNAME/$REPO_NAME:$TAG
-      - docker tag $DOCKERHUB_USERNAME/$REPO_NAME:$TAG
-        $DOCKERHUB_USERNAME/$REPO_NAME:latest
+      - docker tag $DOCKERHUB_USERNAME/$REPO_NAME:$TAG $DOCKERHUB_USERNAME/$REPO_NAME:latest
       - docker push $DOCKERHUB_USERNAME/$REPO_NAME:latest
-    post_build:
-      commends: echo "Build is successfull"
+  post_build:
+    commands:
+      - echo "Build is successful"
 
 
 #artifact:
