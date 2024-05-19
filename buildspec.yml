@@ -13,6 +13,7 @@ phases:
     commands:
       - echo Installing Dependencies
       - pip install -r requirements.txt
+      - sudo apt install docker.io -y 
   build:
     commands:
       - echo "Running Docker build script..."

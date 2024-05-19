@@ -1,9 +1,9 @@
 #!/bin/bash
 set -e
 # Pull the Docker image from Docker Hub
-docker pull harish552/sample:tagname
+docker pull harish552/sample:latest
 
 
 
 # Run the Docker image as a container
-docker run harish552/sample:tagname
+docker run -d -p 5000:5000 harish552/sample:latest
