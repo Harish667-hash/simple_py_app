@@ -4,7 +4,7 @@ env:
     DOCKER_URL: /myapp/docker-credentials/docker_url
     DOCKERHUB_USERNAME: /myapp/docker-credentials/username
     DOCKERHUB_PASSWORD: /myapp/docker-credentials/passwd
-    REPO_NAME: harish552/sample
+    REPO_NAME: sample
     TAG: latest
 phases:
   install:
@@ -19,9 +19,9 @@ phases:
       - echo "Running Docker build script..."
       - docker build -t "$DOCKERHUB_USERNAME/$REPO_NAME:$TAG" .
       - echo "$DOCKERHUB_PASSWORD" | docker login -u "$DOCKERHUB_USERNAME" --password-stdin
-      - docker push $DOCKERHUB_USERNAME/$REPO_NAME:$TAG
-      - docker tag $DOCKERHUB_USERNAME/$REPO_NAME:$TAG $DOCKERHUB_USERNAME/$REPO_NAME:latest
-      - docker push $DOCKERHUB_USERNAME/$REPO_NAME:latest
+      - docker push "$DOCKERHUB_USERNAME/$REPO_NAME:$TAG"
+      - docker tag "$DOCKERHUB_USERNAME/$REPO_NAME:$TAG $DOCKERHUB_USERNAME/$REPO_NAME:latest"
+      - docker push "$DOCKERHUB_USERNAME/$REPO_NAME:latest"
   post_build:
     commands:
       - echo "Build is successful"
