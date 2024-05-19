@@ -9,8 +9,7 @@ phases:
   install:
     runtime-versions:
       python: 3.8
-    commands:
-      - sudo apt-get install docker.io -y
+   
 
   pre_build:
     commands:
