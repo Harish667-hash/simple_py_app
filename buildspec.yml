@@ -9,11 +9,14 @@ phases:
   install:
     runtime-versions:
       python: 3.8
+    commands:
+      - sudo apt-get install docker.io -y
+
   pre_build:
     commands:
       - echo Installing Dependencies
       - pip install -r requirements.txt
-      - sudo apt install docker.io -y 
+      
   build:
     commands:
       - echo "Running Docker build script..."
