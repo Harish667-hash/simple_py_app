@@ -24,7 +24,7 @@ phases:
       
   post_build:
     commands:
-      - echo "Build is successful"
+      - echo "Build is successfully"
 
 
 #artifact:
