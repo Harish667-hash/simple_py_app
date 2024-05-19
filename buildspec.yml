@@ -19,8 +19,8 @@ phases:
     - pip install 
     - pip install -r requirements.txt
     - echo Installing Docker..
-    - apt get update -y
-    - apt get install -y docker.io
+    #- apt get update -y
+    #- apt get install -y docker.io
    
   build:
    - echo "Running Docker build script...
@@ -30,12 +30,16 @@ phases:
    - docker push $DOCKERHUB_USERNAME/$REPO_NAME:$TAG
    - docker tag $DOCKERHUB_USERNAME/$REPO_NAME:$TAG $DOCKERHUB_USERNAME/$REPO_NAME:latest
    - docker push $DOCKERHUB_USERNAME/$REPO_NAME:latest
+  
+  post_build:
+    commends:
+     echo "Build is successfull"
 
 
-artifact:
- files:
-  appspec.yaml
-  script/* .sh
+#artifact:
+ #files:
+ # appspec.yaml
+ # script/* .sh
 
 
 
