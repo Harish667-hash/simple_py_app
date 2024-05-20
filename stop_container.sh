@@ -1,6 +1,9 @@
 #!/bin/bash
 set -e
+# List running containers
+echo "Listing running containers:"
+docker ps
 
-# Stop the running container (if any)
-
-docker stop $(docker ps -q)
+# Stop each running container
+echo "Stopping running containers:"
+docker ps -q | xargs docker stop
